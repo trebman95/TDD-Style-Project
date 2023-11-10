@@ -18,21 +18,21 @@ describe("reciprocal", () => {
     context("if the argument is invalid", () => {
         it("should throw a RangeError if the argument is less than 1", () => {
             const num1 = -2;
-            const actual1 = reciprocal(num1);
+            const actual1 = () => reciprocal(num1);
             const num2 = -4;
-            const actual2 = reciprocal(num2);
+            const actual2 = () => reciprocal(num2);
 
-            expect(actual1).toThrowError(RangeError, "Range Error! Needs to be between 1 to 1000000")
-            expect(actual2).toThrowError(RangeError, "Range Error! Needs to be between 1 to 1000000")
+            expect(actual1).to.throw(RangeError, "Range Error! Needs to be between 1 to 1000000")
+            expect(actual2).to.throw(RangeError, "Range Error! Needs to be between 1 to 1000000")
         });
         it("should throw a RangeError if the argument is more than 1000000", () => {
             const num1 = 1000001;
-            const actual1 = reciprocal(num1);
+            const actual1 = () => reciprocal(num1);
             const num2 = 1000004;
-            const actual2 = reciprocal(num2);
+            const actual2 = () => reciprocal(num2);
 
-            expect(actual1).toThrowError(RangeError, "Range Error! Needs to be between 1 to 1000000")
-            expect(actual2).toThrowError(RangeError, "Range Error! Needs to be between 1 to 1000000")
+            expect(actual1).to.throw(RangeError, "Range Error! Needs to be between 1 to 1000000")
+            expect(actual2).to.throw(RangeError, "Range Error! Needs to be between 1 to 1000000")
         });
     })
     context("if the argument is valid", () => {

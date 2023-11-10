@@ -22,7 +22,7 @@ describe("Person", () => {
 
             expect(typeof greetingMessage).to.equal('string');
             expect(greetingMessage).to.contain(newPerson.name);
-            expect(greetingMessage).to.match('Hello');
+            expect(greetingMessage).to.equal(`Hello ${newPerson.name}`);
         });
 
     });
@@ -58,17 +58,17 @@ describe("Person", () => {
             it("should throw a TypeError if the argument is not an object", () => {
                 const person = new Person("James", 50);
 
-                expect(() => person.update("invalid")).to.throw(TypeError, "Type Error! Has to be an object")
-                expect(() => person.update(null)).to.throw(TypeError, "Type Error! Has to be an object")
-                expect(() => person.update(42)).to.throw(TypeError, "Type Error! Has to be an object")
-                expect(() => person.update(undefined)).to.throw(TypeError, "Type Error! Has to be an object")
+                expect(() => person.update("invalid")).to.throw(Error, "Type Error! Has to be an object")
+                expect(() => person.update(null)).to.throw(Error, "Type Error! Has to be an object")
+                expect(() => person.update(42)).to.throw(Error, "Type Error! Has to be an object")
+                expect(() => person.update(undefined)).to.throw(Error, "Type Error! Has to be an object")
             });
             it("should throw a TypeError if the object does not have a name and an age property", () => {
                 const person = new Person("James", 50);
 
-                expect(() => person.update({ name: "Jane" })).to.throw(TypeError, "Object does not have name and age property");
-                expect(() => person.update({ age: 54 })).to.throw(TypeError, "Object does not have name and age property");
-                expect(() => person.update({})).to.throw(TypeError, "Object does not have name and age property");
+                expect(() => person.update({ name: "Jane" })).to.throw(Error, "Object does not have name and age property");
+                expect(() => person.update({ age: 54 })).to.throw(Error, "Object does not have name and age property");
+                expect(() => person.update({})).to.throw(Error, "Object does not have name and age property");
             });
         })
         context("if the argument is valid", () => {
@@ -96,13 +96,13 @@ describe("Person", () => {
             })
         })
         context("if update is successfully invoked", () => {
-            it("Should return true", () => {
+            it("Should return true to indicate that the update was successful", () => {
                 const person = new Person("James", 50);
                 const result = person.tryUpdate({ name: "James", age: 55 });
 
                 expect(result).to.equal(true);
                 expect(person.name).to.equal("James");
-                expect(person.age).to.equal(50);
+                expect(person.age).to.equal(55);
             })
         })
 
@@ -119,7 +119,13 @@ describe("Person", () => {
 
             expect(Array.isArray(greetings)).to.equal(true)
             expect(greetings.length).to.equal(personArray.length)
-        })
 
+            for (let i = 0; i < personArray.length; i++) {
+                const expectedGreeting = `Hello ${personArray[i].name}`;
+                expect(greetings[i]).to.equal(expectedGreeting);
+            }
+
+
+        });
     });
 });

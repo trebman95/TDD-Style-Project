@@ -6,7 +6,7 @@ class Triangle {
     }
 
     getPerimeter() {
-        //code here
+        return
     }
 
     hasValidSideLengths() {
@@ -28,4 +28,10 @@ class Scalene extends Triangle {
 
 class Isosceles extends Scalene {
     //code here
+}
+
+module.exports = {
+    Triangle: Triangle,
+    Scalene: Scalene,
+    Isosceles: Isosceles
 }

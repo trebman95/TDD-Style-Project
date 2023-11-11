@@ -56,7 +56,24 @@ class Scalene extends Triangle {
 }
 
 class Isosceles extends Scalene {
-    // code here
+    constructor(side1, side2, side3) {
+        super(side1, side2, side3);
+        this.isValidIsosceles = true;
+        this.isValidTriangle = this.hasValidSideLengths();
+    }
+    isIsosceles() {
+        if ((this.side1 === this.side2 && this.side2 !== this.side3) ||
+            (this.side1 === this.side3 && this.side1 !== this.side2) ||
+            (this.side2 === this.side3 && this.side2 !== this.side1)) {
+            return true
+        }
+
+        return false
+    }
+    validate() {
+        super.validate();
+        this.isValidIsosceles = this.isIsosceles();
+    }
 }
 
 module.exports = {

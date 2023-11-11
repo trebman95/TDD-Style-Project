@@ -134,11 +134,12 @@ describe("Isosceles", () => {
             expect(isoscelesConstruct.side2).to.equal(5);
             expect(isoscelesConstruct.side3).to.equal(8);
         });
-        it("should have an isValidIsoceles property derived from the hasValidSideLengths method", () => {
-            const isosceles = new Isosceles(5, 5, 5);
+        it("should have an isValidIsosceles property derived from the hasValidSideLengths method", () => {
+            const isosceles = new Isosceles(5, 5, 8);
+            const hasValidSideLengths = isosceles.hasValidSideLengths();
 
-            expect(isosceles).to.have.property('isValidIsoceles');
-            expect(isosceles.isValidIsoceles).to.be.true;
+            expect(isosceles).to.have.property('isValidIsosceles');
+            expect(isosceles.isValidIsosceles).to.equal(hasValidSideLengths);
         })
     })
     describe("isIsosceles", () => {

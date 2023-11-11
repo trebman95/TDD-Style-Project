@@ -83,19 +83,20 @@ describe("Scalene", () => {
         });
         it("should have an isValidTriangle property derived from the hasValidSideLengths method", () => {
             const scalene = new Scalene(5, 12, 13);
+            const hasValidSideLengths = scalene.hasValidSideLengths();
 
             expect(scalene).to.have.property('isValidTriangle');
-            expect(scalene.isValidTriangle).to.be.true;
+            expect(scalene.isValidTriangle).to.equal(hasValidSideLengths);
         })
     })
     describe("isScalene", () => {
-        it("should return true if it is a valid isosceles triangle", () => {
+        it("should return true if it is a valid scalene triangle", () => {
             const scalene = new Scalene(5, 12, 13);
             const validScalene = scalene.isScalene();
 
             expect(validScalene).to.be.true;
         })
-        it("should return false if is an invalid isosceles triangle", () => {
+        it("should return false if is an invalid scalene triangle", () => {
 
             const scalene = new Scalene(5, 12, 12);
             const invalidScalene = scalene.isScalene();

@@ -30,21 +30,29 @@ class Triangle {
         return triangles.filter(triangle => triangle.hasValidSideLengths())
     };
     isScalene() {
-        return true
+        return false;
     };
     isIsosceles() {
-        return false
+        return false;
     };
 }
 class Scalene extends Triangle {
     constructor(side1, side2, side3) {
         super(side1, side2, side3);
         this.isValidScalene = false;
+        this.isValidTriangle = this.hasValidSideLengths();
+    }
+    isScalene() {
+        if (this.side1 !== this.side2 && this.side2 !== this.side3 && this.side1 !== this.side3) {
+            return true
+        }
+        return false
     }
     validate() {
         super.validate();
-        this.isValidScalene = this.isValid;
+        this.isValidScalene = this.isScalene();
     }
+
 }
 
 class Isosceles extends Scalene {

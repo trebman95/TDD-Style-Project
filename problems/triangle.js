@@ -1,34 +1,50 @@
 class Triangle {
-    //     constructor(side1, side2, side3) {
-    //         this.side1 = side1;
-    //         this.side2 = side2;
-    //         this.side3 = side3;
-    // }
+    constructor(side1, side2, side3) {
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+        this.isValid = false;
+    }
 
     getPerimeter() {
-        return
+        return this.side1 + this.side2 + this.side3
     }
 
     hasValidSideLengths() {
-        //code here
+        const possiblyValid1 = this.side1 + this.side2
+        const possiblyValid2 = this.side1 + this.side3
+        const possiblyValid3 = this.side2 + this.side3
+
+        if (possiblyValid1 > this.side3 && possiblyValid2 > this.side2 && possiblyValid3 > this.side1) {
+            return true
+        }
+
+        return false
     }
 
     validate() {
-        //code here
+        this.isValid = this.hasValidSideLengths();
     }
 
-    static getValidTriangles() {
-        //code here
-    }
+    static getValidTriangles(...triangles) {
+        return triangles.filter(triangle => triangle.hasValidSideLengths())
+    };
     isScalene() {
-
-    }
+        return true
+    };
     isIsosceles() {
-
-    }
+        return false
+    };
 }
 class Scalene extends Triangle {
-
+    constructor(side1, side2, side3) {
+        super(side1, side2, side3);
+        this.isValidScalene = false;
+    }
+    validate() {
+        super.validate();
+        this.isValidScalene = this.isValid;
+    }
 }
 
 class Isosceles extends Scalene {

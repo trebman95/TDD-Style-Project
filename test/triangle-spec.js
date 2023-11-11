@@ -87,80 +87,85 @@ describe("Scalene", () => {
         })
     })
     describe("isScalene", () => {
-        it("should return true if it is a valid scalene triangle", () => {
-            const scalene = new Scalene(5, 12, 13);
+        context("when the triangle is a vaild scalene", () => {
+            it("should return true", () => {
+                const scalene = new Scalene(5, 12, 13);
 
-            expect(scalene.isScalene()).to.be.true;
+                expect(scalene.isScalene()).to.be.true;
+            })
         })
-        it("should return false if is an invalid scalene triangle", () => {
-            const scalene = new Scalene(5, 12, 12);
 
-            expect(scalene.isScalene()).to.be.false;
-        })
-    })
-    describe("validate", () => {
-        it("should set isValidScalene as true if it is a valid scalene", () => {
-            const scalene = new Scalene(5, 12, 13);
-            scalene.validate();
+        context("when the triangle is an invalid scalene triangle", () => {
+            it("should return false", () => {
+                const scalene = new Scalene(5, 12, 12);
 
-            expect(scalene.isValidScalene).to.be.true;
-        })
-        it("should set isValidScalene as false if it is an invalid scalene", () => {
-            const scalene = new Scalene(5, 12, 12);
-            scalene.validate();
-
-            expect(scalene.isValidScalene).to.be.false;
-        })
-    })
-
-});
-
-describe("Isosceles", () => {
-    describe('Isosceles constructor function', () => {
-        it('should create an instance with side1, side2, and side3 properties set properly', () => {
-            const isoscelesConstruct = new Isosceles(5, 5, 8);
-
-            expect(isoscelesConstruct).to.have.property('side1');
-            expect(isoscelesConstruct).to.have.property('side2');
-            expect(isoscelesConstruct).to.have.property('side3');
-            expect(isoscelesConstruct.side1).to.equal(5);
-            expect(isoscelesConstruct.side2).to.equal(5);
-            expect(isoscelesConstruct.side3).to.equal(8);
+                expect(scalene.isScalene()).to.be.false;
+            });
         });
-        it("should have an isValidIsoceles property derived from the hasValidSideLengths method", () => {
-            const isosceles = new Isosceles(5, 5, 5);
+        describe("validate", () => {
+            it("should set isValidScalene as true if it is a valid scalene", () => {
+                const scalene = new Scalene(5, 12, 13);
+                scalene.validate();
 
-            expect(isosceles).to.have.property('isValidIsoceles');
-            expect(isosceles.isValidIsoceles).to.be.true;
+                expect(scalene.isValidScalene).to.be.true;
+            })
+            it("should set isValidScalene as false if it is an invalid scalene", () => {
+                const scalene = new Scalene(5, 12, 12);
+                scalene.validate();
+
+                expect(scalene.isValidScalene).to.be.false;
+            })
         })
-    })
-    describe("isIsosceles", () => {
-        it("should return true if it is a valid isosceles triangle", () => {
-            const isosceles = new Isosceles(5, 5, 8);
-            const realIsosceles = isosceles.isIsosceles();
 
-            expect(realIsosceles).to.be.true;
+    });
+
+    describe("Isosceles", () => {
+        describe('Isosceles constructor function', () => {
+            it('should create an instance with side1, side2, and side3 properties set properly', () => {
+                const isoscelesConstruct = new Isosceles(5, 5, 8);
+
+                expect(isoscelesConstruct).to.have.property('side1');
+                expect(isoscelesConstruct).to.have.property('side2');
+                expect(isoscelesConstruct).to.have.property('side3');
+                expect(isoscelesConstruct.side1).to.equal(5);
+                expect(isoscelesConstruct.side2).to.equal(5);
+                expect(isoscelesConstruct.side3).to.equal(8);
+            });
+            it("should have an isValidIsoceles property derived from the hasValidSideLengths method", () => {
+                const isosceles = new Isosceles(5, 5, 5);
+
+                expect(isosceles).to.have.property('isValidIsoceles');
+                expect(isosceles.isValidIsoceles).to.be.true;
+            })
         })
-        it("should return false if is an invalid isosceles triangle", () => {
+        describe("isIsosceles", () => {
+            it("should return true if it is a valid isosceles triangle", () => {
+                const isosceles = new Isosceles(5, 5, 8);
+                const realIsosceles = isosceles.isIsosceles();
 
-            const isosceles = new Isosceles(3, 4, 5);
-            const invalidIsosceles = isosceles.isIsosceles();
+                expect(realIsosceles).to.be.true;
+            })
+            it("should return false if is an invalid isosceles triangle", () => {
 
-            expect(invalidIsosceles).to.be.false;
+                const isosceles = new Isosceles(3, 4, 5);
+                const invalidIsosceles = isosceles.isIsosceles();
+
+                expect(invalidIsosceles).to.be.false;
+            })
         })
-    })
-    describe("validate", () => {
-        it("should set isValidIsosceles as true if it is a valid isosceles triangle", () => {
-            const isosceles = new Isosceles(5, 5, 8);
-            isosceles.validate();
+        describe("validate", () => {
+            it("should set isValidIsosceles as true if it is a valid isosceles triangle", () => {
+                const isosceles = new Isosceles(5, 5, 8);
+                isosceles.validate();
 
-            expect(isosceles.isValidIsosceles).to.be.true;
-        })
-        it("should set isValidIsosceles as false if it is an invalid isosceles triangle", () => {
-            const isosceles = new Isosceles(3, 4, 5);
-            isosceles.validate();
+                expect(isosceles.isValidIsosceles).to.be.true;
+            })
+            it("should set isValidIsosceles as false if it is an invalid isosceles triangle", () => {
+                const isosceles = new Isosceles(3, 4, 5);
+                isosceles.validate();
 
-            expect(isosceles.isValidIsosceles).to.be.false;
+                expect(isosceles.isValidIsosceles).to.be.false;
+            })
         })
-    })
+    });
 });
